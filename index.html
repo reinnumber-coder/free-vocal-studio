@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#11131b">
+<meta name="description" content="Free Vocal Studio — private, local-first audio stem separation workspace.">
+<link rel="manifest" href="manifest.webmanifest">
+<title>Free Vocal Studio</title>
+<style>
+:root{color-scheme:dark;--bg:#0d0f16;--panel:#171a25;--panel2:#202434;--line:#30364a;--muted:#9aa3b8;--text:#f4f6ff;--accent:#9c8cff;--accent2:#65dfc0;--warn:#ffd28a}
+*{box-sizing:border-box}body{margin:0;background:radial-gradient(ellipse at 20% 0%,#28234a 0,transparent 38%),var(--bg);color:var(--text);font:15px/1.45 system-ui,-apple-system,Segoe UI,Roboto,sans-serif}
+main{max-width:900px;margin:auto;padding:24px 16px 60px}.top{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:24px}.brand{display:flex;align-items:center;gap:12px}.logo{width:44px;height:44px;border-radius:14px;background:linear-gradient(135deg,#9c8cff,#65dfc0);display:grid;place-items:center;color:#10131c;font-size:22px;font-weight:900}.eyebrow{font-size:11px;letter-spacing:.15em;color:var(--accent2);font-weight:800}.top h1{font-size:21px;margin:0}.pill{border:1px solid #356b60;color:#8ce9cf;padding:6px 10px;border-radius:99px;font-size:11px}
+.hero{padding:24px 0 20px}.hero h2{font-size:clamp(28px,6vw,42px);line-height:1.08;margin:8px 0 12px;letter-spacing:-.04em}.hero p{color:var(--muted);max-width:620px;margin:0}
+.card{background:linear-gradient(160deg,rgba(30,34,49,.98),rgba(20,23,33,.98));border:1px solid var(--line);border-radius:20px;padding:18px;margin:14px 0;box-shadow:0 16px 50px #0003}
+.section-head{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-bottom:14px}.section-head h3{margin:0;font-size:16px}.small{color:var(--muted);font-size:12px}
+.drop{border:1.5px dashed #555d7a;border-radius:16px;padding:25px 16px;text-align:center;background:#111521;cursor:pointer}.drop strong{display:block;font-size:16px;margin:7px 0}.drop input{display:none}.drop .symbol{font-size:30px}.fileline{display:none;margin-top:12px;background:var(--panel2);padding:12px;border-radius:12px;overflow-wrap:anywhere}
+.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.option{background:#111521;border:1px solid var(--line);border-radius:13px;padding:12px;display:flex;gap:9px;align-items:flex-start;min-height:65px}.option input{accent-color:var(--accent);margin-top:4px}.option b{display:block;font-size:13px}.option span{font-size:11px;color:var(--muted)}
+select,button{font:inherit}select{width:100%;background:#111521;color:var(--text);border:1px solid var(--line);border-radius:12px;padding:12px}
+.row{display:grid;grid-template-columns:1fr 1fr;gap:12px}.btn{width:100%;border:0;border-radius:13px;padding:14px 16px;background:linear-gradient(100deg,#a18dff,#69dfc1);color:#10131b;font-weight:850;margin-top:14px}.btn:disabled{opacity:.42}
+.notice{border:1px solid #65543b;background:#2b2419;color:#ffe0ac;padding:13px;border-radius:13px;font-size:12px;margin-top:14px}
+.status{display:none;margin-top:14px;padding:12px;border-radius:12px;background:#111521;color:#c8d0e5;font-size:13px}
+audio{width:100%;margin-top:12px}.footer{color:#778098;font-size:11px;text-align:center;padding:18px}
+@media(min-width:650px){.grid{grid-template-columns:repeat(3,minmax(0,1fr))}.card{padding:22px}}
+</style>
+</head>
+<body>
+<main>
+ <header class="top">
+  <div class="brand"><div class="logo">♫</div><div><div class="eyebrow">LOCAL-FIRST AUDIO WORKSPACE</div><h1>Free Vocal Studio</h1></div></div>
+  <div class="pill">NO ACCOUNT</div>
+ </header>
+ <section class="hero">
+  <div class="eyebrow">YOUR AUDIO • YOUR DEVICE</div>
+  <h2>Separate the sound.<br><span style="color:var(--accent2)">Keep every layer.</span></h2>
+  <p>A mobile-friendly workspace for vocal and instrument separation. The interface is prepared for local AI models; processing capabilities are added as compatible models are integrated.</p>
+ </section>
+ <section class="card">
+  <div class="section-head"><h3>01 · Choose audio</h3><span class="small">MP3 · WAV · M4A · FLAC*</span></div>
+  <label class="drop" for="audioFile"><div class="symbol">⬆</div><strong>Tap to choose an audio file</strong><span class="small">Your audio is previewed locally in this browser.</span><input id="audioFile" type="file" accept="audio/*"></label>
+  <div class="fileline" id="fileLine"></div><audio id="preview" controls hidden></audio>
+ </section>
+ <section class="card">
+  <div class="section-head"><h3>02 · Separation targets</h3><span class="small">Choose one or more</span></div>
+  <div class="grid">
+   <label class="option"><input type="checkbox" checked><span><b>Lead vocals</b><span>Main singer extraction</span></span></label>
+   <label class="option"><input type="checkbox" checked><span><b>Backing vocals</b><span>Backing choir / layers*</span></span></label>
+   <label class="option"><input type="checkbox" checked><span><b>Harmony & doubles</b><span>Layered vocal parts*</span></span></label>
+   <label class="option"><input type="checkbox"><span><b>Male / female split</b><span>Voice-type separation*</span></span></label>
+   <label class="option"><input type="checkbox" checked><span><b>Drums</b><span>Percussion stem</span></span></label>
+   <label class="option"><input type="checkbox" checked><span><b>Bass</b><span>Bass stem</span></span></label>
+   <label class="option"><input type="checkbox" checked><span><b>Other instruments</b><span>Remaining accompaniment</span></span></label>
+   <label class="option"><input type="checkbox"><span><b>Guitar</b><span>Six-stem model*</span></span></label>
+   <label class="option"><input type="checkbox"><span><b>Piano</b><span>Six-stem model*</span></span></label>
+  </div>
+  <div class="notice">*These advanced vocal targets need dedicated compatible models. They are shown in the planned interface but are not active in this starter build. Standard four/six-stem separation cannot reliably distinguish lead, backing, harmony, or singer gender by itself.</div>
+ </section>
+ <section class="card">
+  <div class="section-head"><h3>03 · AI engine settings</h3></div>
+  <div class="row">
+   <label><span class="small">Model family</span><select id="model"><option>Demucs — 4 stems (planned)</option><option>Demucs — 6 stems (planned)</option><option>UVR MDX / VR models (planned)</option><option>Ensemble (planned)</option></select></label>
+   <label><span class="small">Processing quality</span><select id="quality"><option>Balanced</option><option>High quality</option><option>Low memory / mobile</option></select></label>
+  </div>
+  <label class="option" style="margin-top:12px"><input id="ensemble" type="checkbox"><span><b>Ensemble mode</b><span>Combine compatible model outputs (requires multiple installed models).</span></span></label>
+  <div class="notice">No cloud API or paid inference service is connected in this starter. The AI separation engine is the next integration step; this page does not yet generate separated stems.</div>
+  <button class="btn" id="run" disabled>AI separation engine not installed yet</button>
+  <div class="status" id="status"></div>
+ </section>
+ <section class="card">
+  <div class="section-head"><h3>04 · Planned cleanup tools</h3><span class="small">Model integration required</span></div>
+  <div class="grid">
+   <div class="option"><span>✦</span><span><b>De-reverb</b><span>Reduce room reflections</span></span></div>
+   <div class="option"><span>✦</span><span><b>De-echo</b><span>Reduce audible echo</span></span></div>
+   <div class="option"><span>✦</span><span><b>Noise reduction</b><span>Reduce steady background noise</span></span></div>
+   <div class="option"><span>✦</span><span><b>Vocal isolation</b><span>Focus on the vocal stem</span></span></div>
+  </div>
+ </section>
+ <div class="footer">Free Vocal Studio · local-first project · UVR / Demucs credits and model licenses must be respected when integrating their code or weights.</div>
+</main>
+<script>
+const picker=document.getElementById('audioFile'),line=document.getElementById('fileLine'),audio=document.getElementById('preview');
+let objectUrl=null;
+picker.addEventListener('change',()=>{
+ const f=picker.files&&picker.files[0]; if(!f)return;
+ if(objectUrl)URL.revokeObjectURL(objectUrl);
+ objectUrl=URL.createObjectURL(f);audio.src=objectUrl;audio.hidden=false;
+ line.style.display='block';line.textContent=`${f.name} · ${(f.size/1024/1024).toFixed(1)} MB`;
+});
+if('serviceWorker' in navigator && location.protocol.startsWith('http')) {
+ window.addEventListener('load',()=>navigator.serviceWorker.register('./sw.js').catch(()=>{}));
+}
+</script>
+</body></html>
