@@ -1,0 +1,13 @@
+{
+  "name": "free-vocal-studio",
+  "version": "6.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": { "build": "node build.mjs" },
+  "dependencies": {
+    "demucs": "^1.0.0",
+    "onnxruntime-web": "^1.23.0",
+    "jszip": "^3.10.1"
+  },
+  "devDependencies": { "esbuild": "^0.25.0" }
+}
