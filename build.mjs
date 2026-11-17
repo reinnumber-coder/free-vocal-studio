@@ -40,4 +40,4 @@ for (const file of [
   'ort-wasm-simd-threaded.jsep.mjs'
 ]) cpSync(join(ortDist, file), join(out, file));
 cpSync(join(root, 'node_modules/demucs/htdemucs.onnx'), join(out, 'htdemucs.onnx'));
-console.log('Free Vocal Studio v6.0 built into docs/');
+console.log('Free Vocal Studio v6.2 built into docs/');
