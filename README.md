@@ -1,32 +1,31 @@
-# Free Vocal Studio — starter build
+# Free Vocal Studio — v2
 
-This is an Android-friendly, installable PWA interface starter.
+## What is working in this version
+- Mobile-friendly website / PWA shell.
+- Local audio file selection and preview.
+- Browser-based Demucs four-stem AI separation using `demucs-web` + `onnxruntime-web`.
+- Select which stems to export: vocals, drums, bass, other.
+- Preview each generated stem and download WAV files.
+- Download all selected stems as a ZIP.
+- Audio inference is performed in the browser; uploaded audio is not sent to a processing server.
 
-## Current working features
-- Responsive mobile interface
-- Local audio file picker and preview (audio remains in the browser)
-- PWA manifest and service-worker app-shell caching
-- UI for vocal/instrument targets, model choice, quality and ensemble settings
+## Model download and requirements
+- The first separation downloads the Demucs ONNX model (roughly 172 MB for the referenced demucs-web implementation).
+- The model is hosted by the project's public model host; model download requires an internet connection.
+- Processing speed and maximum practical track length depend on the phone's CPU, available memory, browser and thermal conditions.
+- The app currently enforces a 5-minute limit as a conservative mobile stability guard, not a paid usage quota.
+- Keep Chrome open during processing. Start with a short test track.
 
-## Important: AI processing is not yet connected
-This starter does NOT currently separate stems, clean vocals, or export processed audio. The controls are a prepared UI, not a functioning AI pipeline. It deliberately does not fake results.
+## Not implemented yet
+Lead/backing vocal isolation, harmony/doubles, male/female split, six-stem guitar/piano separation, cleanup models, multiple model selection and ensemble mode are NOT yet implemented. The current engine provides only the four broad Demucs stems. Do not describe the advanced targets as active until specialist models and tested pipelines are added.
 
-## Recommended engine integration
-A browser-local Demucs ONNX engine is a realistic first milestone:
-- Four stems: vocals, drums, bass, other
-- Six stems: adds guitar and piano
-- ONNX Runtime Web inference in the browser
-- Large model download on first use; cache the model for later sessions
+## Deploy
+Replace the existing repository's `index.html`, `manifest.webmanifest`, `sw.js`, and `README.md` with these files at the repository root. GitHub Pages will publish the changes after commit.
 
-Reference implementation and model notes:
-- https://stemsplit.github.io/demucs-onnx/browser/
-- https://github.com/HRSadeghi/demucs-onnx
-- UVR GUI (MIT; preserve attribution): https://github.com/Anjok07/ultimatevocalremovergui
+## Runtime dependencies
+Loaded as browser ES modules:
+- `onnxruntime-web` 1.20.1 via esm.sh
+- `demucs-web` via esm.sh
+- `jszip` 3.10.1 via esm.sh (only when ZIP export is tapped)
 
-Advanced targets such as lead-vs-backing, harmony/doubles, and male/female voice separation need additional specialist models and should not be represented as features of a standard Demucs 4/6-stem model.
-
-## Run locally
-Open `index.html` for the basic interface and local audio preview. For PWA installation and service-worker support, host over HTTPS (for example, GitHub Pages).
-
-## Free / unlimited caveat
-There is no paid inference API in this starter. Local inference avoids server quotas, but speed and practical track length depend on device memory, CPU/GPU, browser support and model size. "Unlimited" means no app-imposed credit counter, not unlimited device resources.
+This is a static-site integration; no backend or paid inference API is included.
