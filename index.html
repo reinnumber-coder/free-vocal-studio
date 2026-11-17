@@ -8,7 +8,7 @@
 <link rel="manifest" href="./manifest.webmanifest">
 <title>Free Vocal Studio</title>
 <style>
-:root{color-scheme:dark;--bg:#0d0f16;--panel:#171a25;--panel2:#202434;--line:#30364a;--muted:#9aa3b8;--text:#f4f6ff;--accent:#9c8cff;--mint:#65dfc0;--warn:#ffd28a}
+:root{color-scheme:dark;--bg:#0d0f16;--panel:#171a25;--panel2:#202434;--line:#30364a;--muted:#9aa3b8;--text:#f4f6ff;--accent:#9c8cff;--mint:#65dfc0}
 *{box-sizing:border-box}body{margin:0;background:radial-gradient(ellipse at 20% 0%,#28234a 0,transparent 38%),var(--bg);color:var(--text);font:15px/1.45 system-ui,-apple-system,Segoe UI,Roboto,sans-serif}
 main{max-width:920px;margin:auto;padding:20px 15px 55px}.top{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:18px}.brand{display:flex;align-items:center;gap:11px}.logo{width:43px;height:43px;border-radius:14px;background:linear-gradient(135deg,#9c8cff,#65dfc0);display:grid;place-items:center;color:#10131c;font-size:22px;font-weight:900}.eyebrow{font-size:10px;letter-spacing:.15em;color:var(--mint);font-weight:850}.top h1{font-size:20px;margin:0}.pill{border:1px solid #356b60;color:#8ce9cf;padding:6px 10px;border-radius:99px;font-size:10px}
 .hero{padding:18px 0 16px}.hero h2{font-size:clamp(29px,6vw,43px);line-height:1.08;margin:8px 0 12px;letter-spacing:-.04em}.hero p{color:var(--muted);max-width:650px;margin:0}
@@ -22,7 +22,7 @@ select,button{font:inherit}select{width:100%;background:#111521;color:var(--text
 .notice{border:1px solid #65543b;background:#2b2419;color:#ffe0ac;padding:12px;border-radius:12px;font-size:11px;margin-top:12px}
 .status{display:none;margin-top:13px;padding:12px;border-radius:12px;background:#111521;color:#d6def2;font-size:12px;overflow-wrap:anywhere}.bar{height:7px;background:#30364a;border-radius:20px;overflow:hidden;margin-top:9px}.bar>i{display:block;height:100%;width:0;background:linear-gradient(90deg,#9c8cff,#65dfc0);transition:width .2s}
 .outputs{display:grid;gap:10px;margin-top:12px}.output{padding:12px;background:#111521;border:1px solid var(--line);border-radius:12px}.output strong{display:block}.output a{display:inline-block;color:#a99cff;margin-top:7px;font-size:12px}
-audio{width:100%;margin-top:9px}.muted{color:var(--muted)}.foot{color:#778098;font-size:10px;text-align:center;padding:17px}
+audio{width:100%;margin-top:9px}.foot{color:#778098;font-size:10px;text-align:center;padding:17px}
 @media(min-width:650px){.grid{grid-template-columns:repeat(4,minmax(0,1fr))}.card{padding:21px}}
 </style>
 </head>
@@ -30,128 +30,47 @@ audio{width:100%;margin-top:9px}.muted{color:var(--muted)}.foot{color:#778098;fo
 <main>
 <header class="top"><div class="brand"><div class="logo">♫</div><div><div class="eyebrow">BROWSER-BASED AI AUDIO WORKSPACE</div><h1>Free Vocal Studio</h1></div></div><div class="pill">LOCAL PROCESSING</div></header>
 <section class="hero"><div class="eyebrow">NO ACCOUNT · NO CREDIT METER</div><h2>Separate the sound.<br><span style="color:var(--mint)">Keep every layer.</span></h2><p>AI stem separation runs in your browser. Your selected audio is processed on your device; the AI model is downloaded from its public model host.</p></section>
-
-<section class="card">
-<div class="head"><h3>01 · Choose audio</h3><span class="small">MP3 · WAV · M4A · FLAC*</span></div>
+<section class="card"><div class="head"><h3>01 · Choose audio</h3><span class="small">MP3 · WAV · M4A · FLAC*</span></div>
 <label class="drop" for="audioFile"><div class="symbol">⬆</div><strong>Tap to choose an audio file</strong><span class="small">Choose a song stored on your phone</span><input id="audioFile" type="file" accept="audio/*"></label>
 <div class="fileline" id="fileLine"></div><audio id="preview" controls hidden></audio>
-<div class="notice">For Android phones, start with a short test song (about 30–60 seconds). Longer tracks need more memory and processing time. Keep Chrome open while processing.</div>
-</section>
-
-<section class="card">
-<div class="head"><h3>02 · Select stems</h3><span class="small">Demucs 4-stem model</span></div>
-<div class="grid">
-<label class="stem"><input type="checkbox" value="vocals" checked><b>Vocals</b></label>
-<label class="stem"><input type="checkbox" value="drums" checked><b>Drums</b></label>
-<label class="stem"><input type="checkbox" value="bass" checked><b>Bass</b></label>
-<label class="stem"><input type="checkbox" value="other" checked><b>Other</b></label>
-</div>
-<div class="notice">This first engine separates four broad stems. It does not yet isolate lead vs backing vocals, harmonies, or male/female singers. Those need separate specialist models.</div>
-</section>
-
-<section class="card">
-<div class="head"><h3>03 · AI engine</h3><span class="small">Runs in this browser</span></div>
-<div class="row">
-<label><span class="small">Model</span><select id="model"><option value="4">HTDemucs · 4 stems</option><option value="6" disabled>HTDemucs · 6 stems (coming later)</option></select></label>
-<label><span class="small">Compute</span><select id="compute"><option value="wasm">CPU / WASM (compatible)</option></select></label>
-</div>
+<div class="notice">This mobile test build accepts audio up to 5 minutes. Longer tracks may exceed your phone's available memory. Keep Chrome open while processing.</div></section>
+<section class="card"><div class="head"><h3>02 · Select stems</h3><span class="small">Demucs 4-stem model</span></div><div class="grid">
+<label class="stem"><input type="checkbox" value="vocals" checked><b>Vocals</b></label><label class="stem"><input type="checkbox" value="drums" checked><b>Drums</b></label><label class="stem"><input type="checkbox" value="bass" checked><b>Bass</b></label><label class="stem"><input type="checkbox" value="other" checked><b>Other</b></label></div>
+<div class="notice">This engine separates four broad stems. Lead/backing vocals, harmonies, and male/female splits need separate specialist models and are not active yet.</div></section>
+<section class="card"><div class="head"><h3>03 · AI engine</h3><span class="small">Mobile compatibility test</span></div>
+<div class="row"><label><span class="small">Model</span><select id="model"><option value="4">HTDemucs · 4 stems</option></select></label><label><span class="small">Compute</span><select id="compute"><option value="wasm">CPU / WASM · single thread</option></select></label></div>
 <button class="btn" id="run" disabled>Choose an audio file first</button>
-<div class="status" id="status"><div id="statusText">Ready</div><div class="bar"><i id="progress"></i></div></div>
-<div id="results" class="outputs"></div>
-<button class="btn secondary" id="zip" hidden>Download all stems (ZIP)</button>
-</section>
-
-<section class="card">
-<div class="head"><h3>04 · Advanced features roadmap</h3><span class="small">Not active yet</span></div>
-<div class="grid">
-<div class="stem"><b>Lead / backing vocals</b></div><div class="stem"><b>Harmony & doubles</b></div>
-<div class="stem"><b>Male / female split</b></div><div class="stem"><b>Guitar & piano stems</b></div>
-<div class="stem"><b>De-reverb / de-echo</b></div><div class="stem"><b>Noise reduction</b></div>
-<div class="stem"><b>Multiple AI models</b></div><div class="stem"><b>Ensemble mode</b></div>
-</div>
-<div class="notice">These advanced tools are not falsely presented as working. We'll add them only when a compatible model and a tested browser pipeline are integrated.</div>
-</section>
-<div class="foot">Free Vocal Studio · no paid inference API · audio stays in your browser · model weights are downloaded from a public host.</div>
+<div class="status" id="status"><div id="statusText">Ready</div><div class="bar"><i id="progress"></i></div></div><div id="results" class="outputs"></div>
+<button class="btn secondary" id="zip" hidden>Download all stems (ZIP)</button></section>
+<section class="card"><div class="head"><h3>04 · Advanced features roadmap</h3><span class="small">Not active yet</span></div><div class="grid">
+<div class="stem"><b>Lead / backing vocals</b></div><div class="stem"><b>Harmony & doubles</b></div><div class="stem"><b>Male / female split</b></div><div class="stem"><b>Guitar & piano stems</b></div><div class="stem"><b>De-reverb / de-echo</b></div><div class="stem"><b>Noise reduction</b></div><div class="stem"><b>Multiple AI models</b></div><div class="stem"><b>Ensemble mode</b></div></div>
+<div class="notice">These advanced tools will be added only when compatible models and tested browser pipelines are available.</div></section>
+<div class="foot">Free Vocal Studio · no paid inference API · audio stays in your browser · model weights are downloaded from a public model host.</div>
 </main>
-
 <script type="module">
 import * as ort from "https://esm.sh/onnxruntime-web@1.20.1";
 import { DemucsProcessor, CONSTANTS } from "https://esm.sh/demucs-web@latest";
-
-const $ = id => document.getElementById(id);
-const picker=$("audioFile"), run=$("run"), status=$("status"), statusText=$("statusText"), progress=$("progress"), results=$("results"), zipBtn=$("zip");
-let file=null, processor=null, stemsForZip=[], objectUrl=null;
-
+const $=id=>document.getElementById(id), picker=$("audioFile"),run=$("run"),status=$("status"),statusText=$("statusText"),progress=$("progress"),results=$("results"),zipBtn=$("zip");
+let file=null,processor=null,stemsForZip=[],objectUrl=null;
 function say(msg,pct=null){status.style.display="block";statusText.textContent=msg;if(pct!==null)progress.style.width=Math.max(0,Math.min(100,pct))+"%";}
-function wavBlob(left,right,sampleRate=44100){
-  const n=Math.min(left.length,right.length), buffer=new ArrayBuffer(44+n*4), view=new DataView(buffer);
-  const write=(o,s)=>{for(let i=0;i<s.length;i++)view.setUint8(o+i,s.charCodeAt(i));};
-  write(0,"RIFF");view.setUint32(4,36+n*4,true);write(8,"WAVE");write(12,"fmt ");view.setUint32(16,16,true);view.setUint16(20,1,true);view.setUint16(22,2,true);view.setUint32(24,sampleRate,true);view.setUint32(28,sampleRate*4,true);view.setUint16(32,4,true);view.setUint16(34,16,true);write(36,"data");view.setUint32(40,n*4,true);
-  let o=44;for(let i=0;i<n;i++){for(const v of [left[i],right[i]]){const s=Math.max(-1,Math.min(1,v));view.setInt16(o,s<0?s*32768:s*32767,true);o+=2;}}
-  return new Blob([buffer],{type:"audio/wav"});
-}
-picker.addEventListener("change",()=>{
- file=picker.files?.[0]||null;if(!file)return;
- if(objectUrl)URL.revokeObjectURL(objectUrl);
- objectUrl=URL.createObjectURL(file);$("preview").src=objectUrl;$("preview").hidden=false;
- $("fileLine").style.display="block";$("fileLine").textContent=`${file.name} · ${(file.size/1048576).toFixed(1)} MB`;
- run.disabled=false;run.textContent="Load AI model & separate stems";results.innerHTML="";zipBtn.hidden=true;
-});
-async function getProcessor(){
- if(processor)return processor;
- say("Preparing AI runtime…",2);
- ort.env.wasm.numThreads=Math.max(1,Math.min(navigator.hardwareConcurrency||2,4));
- processor=new DemucsProcessor({
-  ort,
-  sessionOptions:{enableCpuMemArena:false,enableMemPattern:false,executionProviders:["wasm"]},
-  onLog:(phase,msg)=>say(`${phase}: ${msg}`),
-  onDownloadProgress:(loaded,total)=>say(`Downloading AI model: ${(loaded/1048576).toFixed(1)} / ${(total/1048576).toFixed(1)} MB`,total?loaded/total*100:0),
-  onProgress:({progress:p,currentSegment,totalSegments})=>say(`Separating audio: segment ${currentSegment}/${totalSegments}`,p*100)
- });
- await processor.loadModel(CONSTANTS.DEFAULT_MODEL_URL);
- return processor;
-}
-run.addEventListener("click",async()=>{
- if(!file)return;
- run.disabled=true;results.innerHTML="";stemsForZip=[];zipBtn.hidden=true;
- let ctx;
- try{
-  if(!("AudioContext" in window || "webkitAudioContext" in window))throw new Error("This browser does not support Web Audio.");
-  const AC=window.AudioContext||window.webkitAudioContext;ctx=new AC({sampleRate:44100});
-  const p=await getProcessor();
-  say("Reading and decoding your audio…",4);
-  const decoded=await ctx.decodeAudioData(await file.arrayBuffer());
-  if(decoded.duration>300)throw new Error("For this phone-friendly first version, please use audio up to 5 minutes.");
-  let left=decoded.getChannelData(0),right=decoded.numberOfChannels>1?decoded.getChannelData(1):left;
-  if(decoded.sampleRate!==44100)throw new Error("Audio decoding did not produce 44.1 kHz. Please try a WAV or MP3 file.");
-  say("AI separation running. Keep this tab open…",8);
-  const out=await p.separate(left,right);
-  const selected=[...document.querySelectorAll('input[type=checkbox][value]:checked')].map(x=>x.value);
-  const names=["vocals","drums","bass","other"];
-  for(const name of names){
-   if(!selected.includes(name))continue;
-   const item=out[name];if(!item)continue;
-   const blob=wavBlob(item.left,item.right,44100),url=URL.createObjectURL(blob);
-   stemsForZip.push({name,blob});
-   const box=document.createElement("div");box.className="output";
-   const title=document.createElement("strong");title.textContent=name[0].toUpperCase()+name.slice(1);
-   const player=document.createElement("audio");player.controls=true;player.src=url;
-   const link=document.createElement("a");link.href=url;link.download=`${file.name.replace(/\.[^.]+$/,"")}_${name}.wav`;link.textContent="Download WAV";
-   box.append(title,player,link);results.append(box);
-  }
-  say("Separation complete. Your stems are ready to preview and download.",100);
-  zipBtn.hidden=stemsForZip.length===0;
- }catch(err){console.error(err);say("Could not finish: "+(err?.message||String(err)));alert("Separation could not finish: "+(err?.message||String(err)));}
- finally{run.disabled=false;run.textContent="Separate another song";if(ctx)await ctx.close().catch(()=>{});}
-});
-zipBtn.addEventListener("click",async()=>{
- try{
-  const {default:JSZip}=await import("https://esm.sh/jszip@3.10.1");
-  const z=new JSZip();for(const s of stemsForZip)z.file(`${file.name.replace(/\.[^.]+$/,"")}_${s.name}.wav`,s.blob);
-  const blob=await z.generateAsync({type:"blob"}),url=URL.createObjectURL(blob),a=document.createElement("a");
-  a.href=url;a.download="free-vocal-studio-stems.zip";a.click();setTimeout(()=>URL.revokeObjectURL(url),30000);
- }catch(e){alert("ZIP export failed: "+e.message);}
-});
-if("serviceWorker" in navigator && location.protocol.startsWith("http"))window.addEventListener("load",()=>navigator.serviceWorker.register("./sw.js").catch(()=>{}));
+function wavBlob(left,right,sampleRate=44100){const n=Math.min(left.length,right.length),buffer=new ArrayBuffer(44+n*4),v=new DataView(buffer),w=(o,s)=>{for(let i=0;i<s.length;i++)v.setUint8(o+i,s.charCodeAt(i));};w(0,"RIFF");v.setUint32(4,36+n*4,true);w(8,"WAVE");w(12,"fmt ");v.setUint32(16,16,true);v.setUint16(20,1,true);v.setUint16(22,2,true);v.setUint32(24,sampleRate,true);v.setUint32(28,sampleRate*4,true);v.setUint16(32,4,true);v.setUint16(34,16,true);w(36,"data");v.setUint32(40,n*4,true);let o=44;for(let i=0;i<n;i++)for(const x of [left[i],right[i]]){const s=Math.max(-1,Math.min(1,x));v.setInt16(o,s<0?s*32768:s*32767,true);o+=2;}return new Blob([buffer],{type:"audio/wav"});}
+picker.addEventListener("change",()=>{file=picker.files?.[0]||null;if(!file)return;if(objectUrl)URL.revokeObjectURL(objectUrl);objectUrl=URL.createObjectURL(file);$("preview").src=objectUrl;$("preview").hidden=false;$("fileLine").style.display="block";$("fileLine").textContent=`${file.name} · ${(file.size/1048576).toFixed(1)} MB`;run.disabled=false;run.textContent="Load AI model & separate stems";results.innerHTML="";zipBtn.hidden=true;});
+async function getProcessor(){if(processor)return processor;say("Preparing AI runtime…",2);
+  // GitHub Pages does not provide cross-origin isolation headers. Force one WASM thread.
+  ort.env.wasm.numThreads=1;
+  // Pin the matching ONNX Runtime WebAssembly assets instead of relying on inferred CDN paths.
+  ort.env.wasm.wasmPaths="https://cdn.jsdelivr.net/npm/onnxruntime-web@1.20.1/dist/";
+  ort.env.logLevel="warning";
+  processor=new DemucsProcessor({ort,sessionOptions:{enableCpuMemArena:false,enableMemPattern:false,executionProviders:["wasm"],intraOpNumThreads:1,interOpNumThreads:1},
+    onLog:(phase,msg)=>say(`${phase}: ${msg}`),
+    onDownloadProgress:(loaded,total)=>say(`Downloading AI model: ${(loaded/1048576).toFixed(1)} / ${(total/1048576).toFixed(1)} MB`,total?loaded/total*100:0),
+    onProgress:({progress:p,currentSegment,totalSegments})=>say(`Separating audio: segment ${currentSegment}/${totalSegments}`,p*100)});
+  await processor.loadModel(CONSTANTS.DEFAULT_MODEL_URL);return processor;}
+run.addEventListener("click",async()=>{if(!file)return;run.disabled=true;results.innerHTML="";stemsForZip=[];zipBtn.hidden=true;let ctx;
+try{if(!("AudioContext"in window||"webkitAudioContext"in window))throw new Error("This browser does not support Web Audio.");const AC=window.AudioContext||window.webkitAudioContext;ctx=new AC({sampleRate:44100});const p=await getProcessor();say("Reading and decoding your audio…",4);const decoded=await ctx.decodeAudioData(await file.arrayBuffer());if(decoded.duration>300)throw new Error("Please use audio up to 5 minutes in this test build.");const left=decoded.getChannelData(0),right=decoded.numberOfChannels>1?decoded.getChannelData(1):left;if(decoded.sampleRate!==44100)throw new Error(`Decoded sample rate is ${decoded.sampleRate} Hz, not 44.1 kHz. Try another MP3 or WAV file.`);say("AI separation running. Keep this tab open…",8);const out=await p.separate(left,right);const selected=[...document.querySelectorAll('input[type=checkbox][value]:checked')].map(x=>x.value);for(const name of ["vocals","drums","bass","other"]){if(!selected.includes(name)||!out[name])continue;const item=out[name],blob=wavBlob(item.left,item.right,44100),url=URL.createObjectURL(blob);stemsForZip.push({name,blob});const box=document.createElement("div");box.className="output";const title=document.createElement("strong");title.textContent=name[0].toUpperCase()+name.slice(1);const player=document.createElement("audio");player.controls=true;player.src=url;const link=document.createElement("a");link.href=url;link.download=`${file.name.replace(/\.[^.]+$/,"")}_${name}.wav`;link.textContent="Download WAV";box.append(title,player,link);results.append(box);}say("Separation complete. Your stems are ready to preview and download.",100);zipBtn.hidden=stemsForZip.length===0;
+}catch(err){console.error(err);const msg=err?.message||String(err);say("Could not finish: "+msg);alert("Separation could not finish: "+msg);}
+finally{run.disabled=false;run.textContent="Separate another song";if(ctx)await ctx.close().catch(()=>{});}});
+zipBtn.addEventListener("click",async()=>{try{const {default:JSZip}=await import("https://esm.sh/jszip@3.10.1");const z=new JSZip();for(const s of stemsForZip)z.file(`${file.name.replace(/\.[^.]+$/,"")}_${s.name}.wav`,s.blob);const blob=await z.generateAsync({type:"blob"}),url=URL.createObjectURL(blob),a=document.createElement("a");a.href=url;a.download="free-vocal-studio-stems.zip";a.click();setTimeout(()=>URL.revokeObjectURL(url),30000);}catch(e){alert("ZIP export failed: "+e.message);}});
+if("serviceWorker"in navigator&&location.protocol.startsWith("http"))window.addEventListener("load",()=>navigator.serviceWorker.register("./sw.js").catch(()=>{}));
 </script>
 </body></html>
