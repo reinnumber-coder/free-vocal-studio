@@ -6,11 +6,15 @@
 <meta name="theme-color" content="#11131b">
 <meta name="description" content="Free Vocal Studio — browser-based local AI stem separation.">
 <link rel="manifest" href="./manifest.webmanifest">
-<title>Free Vocal Studio v4.0</title>
+<title>Free Vocal Studio — VERSION 5.0</title>
 <style>
 :root{color-scheme:dark;--bg:#0d0f16;--panel:#171a25;--panel2:#202434;--line:#30364a;--muted:#9aa3b8;--text:#f4f6ff;--accent:#9c8cff;--mint:#65dfc0}
 *{box-sizing:border-box}body{margin:0;background:radial-gradient(ellipse at 20% 0%,#28234a 0,transparent 38%),var(--bg);color:var(--text);font:15px/1.45 system-ui,-apple-system,Segoe UI,Roboto,sans-serif}
 main{max-width:920px;margin:auto;padding:20px 15px 55px}.top{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:18px}.brand{display:flex;align-items:center;gap:11px}.logo{width:43px;height:43px;border-radius:14px;background:linear-gradient(135deg,#9c8cff,#65dfc0);display:grid;place-items:center;color:#10131c;font-size:22px;font-weight:900}.eyebrow{font-size:10px;letter-spacing:.15em;color:var(--mint);font-weight:850}.top h1{font-size:20px;margin:0}.pill{border:1px solid #356b60;color:#8ce9cf;padding:6px 10px;border-radius:99px;font-size:10px}
+.build-banner{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin:8px 0 14px;padding:15px 16px;border:2px solid #65dfc0;border-radius:15px;background:linear-gradient(100deg,#28234a,#173b3b);color:#fff}
+.build-banner .build-label{font-size:12px;font-weight:900;letter-spacing:.08em;color:#baf8e8}
+.build-banner strong{font-size:30px;line-height:1;color:#fff}
+.build-banner .build-detail{font-size:11px;font-weight:800;color:#d6def2}
 .hero{padding:18px 0 16px}.hero h2{font-size:clamp(29px,6vw,43px);line-height:1.08;margin:8px 0 12px;letter-spacing:-.04em}.hero p{color:var(--muted);max-width:650px;margin:0}
 .card{background:linear-gradient(160deg,rgba(30,34,49,.98),rgba(20,23,33,.98));border:1px solid var(--line);border-radius:19px;padding:17px;margin:13px 0;box-shadow:0 16px 50px #0003}
 .head{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-bottom:13px}.head h3{margin:0;font-size:16px}.small{color:var(--muted);font-size:11px}
@@ -28,7 +32,12 @@ audio{width:100%;margin-top:9px}.foot{color:#778098;font-size:10px;text-align:ce
 </head>
 <body>
 <main>
-<header class="top"><div class="brand"><div class="logo">♫</div><div><div class="eyebrow">BROWSER-BASED AI AUDIO WORKSPACE</div><h1>Free Vocal Studio</h1></div></div><div class="pill">VERSION 4.0 · MOBILE TEST</div></header>
+<header class="top"><div class="brand"><div class="logo">♫</div><div><div class="eyebrow">BROWSER-BASED AI AUDIO WORKSPACE</div><h1>Free Vocal Studio</h1></div></div><div class="pill">VERSION 5.0</div></header>
+<div class="build-banner" role="status" aria-label="Website version">
+  <span class="build-label">WEBSITE VERSION</span>
+  <strong>5.0</strong>
+  <span class="build-detail">BUILD 2026-11-17 · VERSION CHECK</span>
+</div>
 <section class="hero"><div class="eyebrow">NO ACCOUNT · NO CREDIT METER</div><h2>Separate the sound.<br><span style="color:var(--mint)">Keep every layer.</span></h2><p>AI stem separation runs in your browser. Your selected audio is processed on your device; the AI model is downloaded from its public model host.</p></section>
 <section class="card"><div class="head"><h3>01 · Choose audio</h3><span class="small">MP3 · WAV · M4A · FLAC*</span></div>
 <label class="drop" for="audioFile"><div class="symbol">⬆</div><strong>Tap to choose an audio file</strong><span class="small">Choose a song stored on your phone</span><input id="audioFile" type="file" accept="audio/*"></label>
@@ -45,7 +54,7 @@ audio{width:100%;margin-top:9px}.foot{color:#778098;font-size:10px;text-align:ce
 <section class="card"><div class="head"><h3>04 · Advanced features roadmap</h3><span class="small">Not active yet</span></div><div class="grid">
 <div class="stem"><b>Lead / backing vocals</b></div><div class="stem"><b>Harmony & doubles</b></div><div class="stem"><b>Male / female split</b></div><div class="stem"><b>Guitar & piano stems</b></div><div class="stem"><b>De-reverb / de-echo</b></div><div class="stem"><b>Noise reduction</b></div><div class="stem"><b>Multiple AI models</b></div><div class="stem"><b>Ensemble mode</b></div></div>
 <div class="notice">These advanced tools will be added only when compatible models and tested browser pipelines are available.</div></section>
-<div class="foot">Free Vocal Studio · VERSION 4.0 · BUILD 2026-11-17 · no paid inference API · audio stays in your browser · model weights are downloaded from a public model host.</div>
+<div class="foot">Free Vocal Studio · VERSION 5.0 · BUILD 2026-11-17 · no paid inference API · audio stays in your browser · model weights are downloaded from a public model host.</div>
 </main>
 <script type="module">
 import * as ort from "https://esm.sh/onnxruntime-web@1.20.1";
